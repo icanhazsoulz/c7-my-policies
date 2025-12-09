@@ -21,3 +21,10 @@ jobs:
         run: pip install c7n
       - name: Validate policies
         run: custodian validate policy.yml
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::086387342243:role/github-actions-role
+          aws-region: us-west-2
+      - name: Dry-run policies
+        run: custodian run --dryrun -s output policy.yml
