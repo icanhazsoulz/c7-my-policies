@@ -1,5 +1,9 @@
 policies:
-  - name: aws-vpcs
+  - name: list-vpcs-daily
     resource: aws.vpc
+    mode:
+      type: periodic
+      schedule: "rate(1 day)"
+      role: arn:aws:iam::086387342243:role/custodian-lambda-execution-role
   - name: aws-lambda
     resource: aws.lambda

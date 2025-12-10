@@ -32,3 +32,5 @@ jobs:
           aws-region: us-west-2
       - name: Dry-run policies
         run: custodian run --dryrun -s output policy.yml
+      - name: Deploy Custodian Lambda policies
+        run: custodian run -s output policy.yml
